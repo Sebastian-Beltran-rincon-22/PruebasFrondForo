@@ -13,16 +13,7 @@
       <div class="post-content">
         <textarea [(ngModel)]="postText" placeholder="Escribe tu publicación..."></textarea>
         <div class="button-group">
-          <button class="insert-button" (click)="isModalVisible = true">Insertar Imagen</button>
-          <div id="myModal" class="modal" *ngIf="isModalVisible">
-            <div class="modal-content">
-              <span class="close" (click)="isModalVisible = false">&times;</span>
-              <input type="text" [(ngModel)]="imageURL" placeholder="Inserta la URL de la imagen">
-              <button (click)="isModalVisible = false">Cancelar</button>
-              <button (click)="insertImageUrl()">Insertar</button>
-            </div>
-          </div>
-
+          <button class="insert-button" (click)="openModal()">Insertar Imagen</button>
           <button class="publish-button" (click)="publishPost()">Publicar</button>
         </div>
       </div>
@@ -51,3 +42,6 @@
   </div>
 </div>
 
+<div class="custom-modal" *ngIf="isModalVisible == true">
+  <app-modal></app-modal>
+</div>
