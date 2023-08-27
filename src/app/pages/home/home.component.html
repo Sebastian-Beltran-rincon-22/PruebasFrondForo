@@ -2,110 +2,39 @@
   <div class="aside">
     <app-aside></app-aside>
   </div>
-
-  <div class="content-home">
-    <form id="publishForm">
-      <section class="publication">
-        <div class="row-img-textarea">
-          <!-- <img src="<%= imageUrl %>" alt="Logo"> -->
-          <img class="publication-image"
-            src="https://s3-alpha-sig.figma.com/img/3a9f/121e/2d3febb94ed1a92d5dfa8bbd2b8dbf07?Expires=1693785600&Signature=BlDf7m-Xt-ai6cQIG6HE5bL3p353SKG5vKFZOZDhUs2GOgh4HgJryO57X2V6kfSGYPGmf3R1cGpGReQXUjodSyrL2DLDauMkyWQzHl0rLYcVNBeWs9c8gFqiJ-dwQ6hwannREi~9f2xKU6nieBoUkqxtJ-BTOOZp73AeqC-E2MxB-9KhKPtjajeHa04tZ1n8Js9AmMWEON0IpRzX3INR5QyrQzxuCE9xSQMTNhAKdOCa4V2Cusz2fXKe0a6CZtc97bcTEFpGjTgzYmJFfzp2by~HGbf34ck0zvUbgnHU30Z6FZs2nbMQkNL99XiBwcFI1AXqhUX1P4ociSwfAjedww__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-            alt="logo">
-          <div class="textarea-container">
-            <textarea id="content" name="content" rows="4" cols="50" placeholder="Write" required></textarea><br><br>
-          </div>
-        </div>
-
-        <div class="row">
-          <button type="image" class="insert-image-button">
-            <span class="icon-image">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 40 35" fill="none">
-                <g clip-path="url(#clip0_110_50)">
-                  <path
-                    d="M35.5556 3.88889H4.44444C3.85507 3.88889 3.28984 4.09375 2.8731 4.4584C2.45635 4.82305 2.22222 5.31763 2.22222 5.83333V29.1667C2.22222 29.6824 2.45635 30.1769 2.8731 30.5416C3.28984 30.9062 3.85507 31.1111 4.44444 31.1111H35.5556C36.1449 31.1111 36.7102 30.9062 37.1269 30.5416C37.5437 30.1769 37.7778 29.6824 37.7778 29.1667V5.83333C37.7778 5.31763 37.5437 4.82305 37.1269 4.4584C36.7102 4.09375 36.1449 3.88889 35.5556 3.88889ZM4.44444 29.1667V5.83333H35.5556V29.1667H4.44444Z"
-                    fill="white" />
-                  <path
-                    d="M9.91111 13.6111C10.5704 13.6111 11.2148 13.44 11.763 13.1196C12.3112 12.7991 12.7384 12.3436 12.9907 11.8106C13.243 11.2776 13.309 10.6912 13.1804 10.1254C13.0518 9.55965 12.7343 9.03995 12.2681 8.63204C11.802 8.22414 11.208 7.94636 10.5614 7.83382C9.91481 7.72128 9.24459 7.77903 8.6355 7.99979C8.02641 8.22055 7.50582 8.59438 7.13955 9.07403C6.77327 9.55367 6.57778 10.1176 6.57778 10.6944C6.57778 11.468 6.92897 12.2099 7.55409 12.7568C8.17921 13.3038 9.02706 13.6111 9.91111 13.6111ZM9.91111 9.13888C10.2632 9.13696 10.608 9.22655 10.9018 9.3963C11.1956 9.56605 11.4252 9.80832 11.5615 10.0924C11.6977 10.3765 11.7345 10.6895 11.6672 10.9919C11.5998 11.2943 11.4314 11.5724 11.1832 11.7909C10.9351 12.0094 10.6183 12.1585 10.2732 12.2194C9.928 12.2802 9.56998 12.2499 9.24449 12.1325C8.91899 12.015 8.64068 11.8157 8.44484 11.5597C8.249 11.3036 8.14445 11.0025 8.14444 10.6944C8.14736 10.2852 8.33442 9.89354 8.66511 9.60419C8.99579 9.31484 9.44346 9.15116 9.91111 9.14861V9.13888Z"
-                    fill="white" />
-                  <path
-                    d="M25.3111 14.9431L19.3111 20.1931L14.8667 16.3042C14.6585 16.1231 14.3769 16.0215 14.0833 16.0215C13.7898 16.0215 13.5082 16.1231 13.3 16.3042L6.57778 22.2639V25.0153L14.1222 18.4139L17.7778 21.5639L13.6111 25.2097H16.6667L26.0556 16.9944L33.3333 23.3333V20.5917L26.8778 14.9431C26.6696 14.762 26.388 14.6603 26.0944 14.6603C25.8009 14.6603 25.5193 14.762 25.3111 14.9431Z"
-                    fill="white" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_110_50">
-                    <rect width="40" height="35" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </span>
-            <span class="text-imagen">Insertar imagen</span>
-          </button>
-          <button type="submit" class="publish-button">
-            <span class="icon-submit">
-              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="31" viewBox="0 0 37 31" fill="none">
-                <path d="M36 15.7368L1 30.4737L7.5625 15.7368L1 1L36 15.7368Z" stroke="white" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M7.3158 15.7368H35.8684" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-            <span class="text-submit">Publicar</span>
-          </button>
-        </div>
-      </section>
-    </form>
-
-    <section class="modify-publication">
-      <span class="head-publication">
-        <!-- <img src="<%= imageUrl %>" alt="Logo"> -->
-        <img
-          src="https://s3-alpha-sig.figma.com/img/3a9f/121e/2d3febb94ed1a92d5dfa8bbd2b8dbf07?Expires=1693785600&Signature=BlDf7m-Xt-ai6cQIG6HE5bL3p353SKG5vKFZOZDhUs2GOgh4HgJryO57X2V6kfSGYPGmf3R1cGpGReQXUjodSyrL2DLDauMkyWQzHl0rLYcVNBeWs9c8gFqiJ-dwQ6hwannREi~9f2xKU6nieBoUkqxtJ-BTOOZp73AeqC-E2MxB-9KhKPtjajeHa04tZ1n8Js9AmMWEON0IpRzX3INR5QyrQzxuCE9xSQMTNhAKdOCa4V2Cusz2fXKe0a6CZtc97bcTEFpGjTgzYmJFfzp2by~HGbf34ck0zvUbgnHU30Z6FZs2nbMQkNL99XiBwcFI1AXqhUX1P4ociSwfAjedww__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-          alt="logo">
-
-        <h6 id="user-name">user-name</h6>
-
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" width="29" height="7" viewBox="0 0 29 7" fill="none">
-            <path
-              d="M0.25 3.1424C0.25 1.54497 1.54497 0.25 3.14239 0.25H4.00476C5.60219 0.25 6.89716 1.54497 6.89716 3.1424C6.89716 4.73982 5.60219 6.03479 4.00476 6.03479H3.1424C1.54497 6.03479 0.25 4.73982 0.25 3.1424ZM10.9707 3.1424C10.9707 1.54497 12.2657 0.25 13.8631 0.25H14.7255C16.3229 0.25 17.6179 1.54497 17.6179 3.1424C17.6179 4.73982 16.3229 6.03479 14.7255 6.03479H13.8631C12.2657 6.03479 10.9707 4.73982 10.9707 3.1424ZM21.6915 3.1424C21.6915 1.54497 22.9864 0.25 24.5839 0.25H25.4462C27.0437 0.25 28.3386 1.54497 28.3386 3.1424C28.3386 4.73982 27.0437 6.03479 25.4462 6.03479H24.5839C22.9864 6.03479 21.6915 4.73982 21.6915 3.1424Z"
-              fill="#4A4A4A" stroke="white" stroke-width="0.5" />
-          </svg>
-        </button>
-      </span>
-
-      <img class="img-publication"
-        src="https://s3-alpha-sig.figma.com/img/3a9f/121e/2d3febb94ed1a92d5dfa8bbd2b8dbf07?Expires=1693785600&Signature=BlDf7m-Xt-ai6cQIG6HE5bL3p353SKG5vKFZOZDhUs2GOgh4HgJryO57X2V6kfSGYPGmf3R1cGpGReQXUjodSyrL2DLDauMkyWQzHl0rLYcVNBeWs9c8gFqiJ-dwQ6hwannREi~9f2xKU6nieBoUkqxtJ-BTOOZp73AeqC-E2MxB-9KhKPtjajeHa04tZ1n8Js9AmMWEON0IpRzX3INR5QyrQzxuCE9xSQMTNhAKdOCa4V2Cusz2fXKe0a6CZtc97bcTEFpGjTgzYmJFfzp2by~HGbf34ck0zvUbgnHU30Z6FZs2nbMQkNL99XiBwcFI1AXqhUX1P4ociSwfAjedww__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-        alt="Imagen">
-
-      <div class="interaction-toolbar">
-        <button class="like-publication">
-          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="32" viewBox="0 0 34 32" fill="none">
-            <path
-              d="M31.5421 11.1597C31.5421 13.5761 30.665 15.897 29.0987 17.6139C25.4932 21.5672 21.9962 25.6895 18.256 29.4995C17.3987 30.3602 16.0387 30.3288 15.2183 29.4292L4.44277 17.6139C1.18574 14.0425 1.18574 8.27692 4.44277 4.70558C7.73182 1.09914 13.09 1.09914 16.379 4.70558L16.7708 5.13503L17.1622 4.70583C18.7391 2.97578 20.8869 2 23.1304 2C25.374 2 27.5216 2.97569 29.0987 4.70558C30.6652 6.42258 31.5421 8.74339 31.5421 11.1597Z"
-              stroke="white" stroke-width="3.5" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <button class="comment-publication">
-          <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" viewBox="0 0 31 32" fill="none">
-            <path
-              d="M15.3324 30C12.7031 30 10.1328 29.1752 7.94663 27.63C5.76046 26.0848 4.05654 23.8886 3.05035 21.319C2.04416 18.7494 1.7809 15.9219 2.29385 13.194C2.8068 10.4662 4.07293 7.96049 5.93212 5.99382C7.79131 4.02714 10.1601 2.68782 12.7388 2.14521C15.3176 1.60261 17.9906 1.88109 20.4197 2.94545C22.8489 4.00981 24.9251 5.81223 26.3859 8.1248C27.8466 10.4374 28.6263 13.1562 28.6263 15.9375C28.6263 18.2625 28.0945 20.4531 27.1492 22.3859L28.6263 30L21.4284 28.4375C19.6027 29.4359 17.5288 30 15.3324 30Z"
-              stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <button class="share-publication">
-          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="31" viewBox="0 0 37 31" fill="none">
-            <path d="M36 15.7368L1 30.4737L7.5625 15.7368L1 1L36 15.7368Z" stroke="white" stroke-linecap="round"
-              stroke-linejoin="round" />
-            <path d="M7.3158 15.7368H35.8684" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
+  <div class="main-content">
+    <div class="post-container">
+      <div class="user-info">
+        <img class="user-image" src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="Imagen de usuario">
       </div>
-      <div class="user-comment">
-        <h6 id="user-name">user-name</h6>
-        <h6 id="user-publication">user-publication</h6>
+      <div class="post-content">
+        <textarea [(ngModel)]="postText" placeholder="Escribe tu publicación..."></textarea>
+        <div class="button-group">
+          <button class="insert-button" (click)="insertImage()">Insertar Imagen</button>
+          <button class="publish-button" (click)="publishPost()">Publicar</button>
+        </div>
       </div>
+    </div>
 
-      <textarea name="Add-comment" id="Add-comment" rows="4" cols="50" placeholder="Añadir un comentario"
-        required></textarea>
-    </section>
+    <div *ngFor="let publication of listpublications" class="post">
+      <div class="post-header">
+        <img class="user-avatar" [src]="publication.user" alt="Avatar de usuario">
+        <div class="user-info">
+          <p class="user-name">{{ publication.username }}</p>
+          <p class="post-time">{{ publication.date_create | date }}</p>
+        </div>
+      </div>
+      <div class="post-text">
+        {{ publication.description }}
+      </div>
+      <div class="post-image">
+        <img [src]="publication.image" alt="Imagen de la publicación">
+      </div>
+      <div class="post-actions">
+        <button class="like-button">Me gusta</button>
+        <button class="comment-button">Comentar</button>
+        <button class="share-button">Compartir</button>
+      </div>
+    </div>
   </div>
 </div>
