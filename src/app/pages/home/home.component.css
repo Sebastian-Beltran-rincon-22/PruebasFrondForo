@@ -1,363 +1,166 @@
-@media (max-width:414px) {
-  .home-content {
-    display: flex;
-    background: #121212;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-  }
 
-
-  .publication {
-    display: flex;
-    margin-top: 54px;
-    flex-direction: row;
-    border-bottom: 1px solid white;
-  }
-
-  .publication img {
-    width: 25px;
-    height: 23px;
-    margin-left: 9px;
-    flex-shrink: 0;
-    border-radius: 25px;
-    background: lightgray / cover no-repeat;
-  }
-
-  .publication textarea {
-    width: 132px;
-    height: 17px;
-    margin-top: 3px;
-    margin-left: 5px;
-    flex-shrink: 0;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    background-color: #121212;
-    resize: none;
-    border: none;
-    line-height: 20px;
-  }
-
-  button {
-    color: #FFF;
-    background-color: #121212;
-    border: none;
-  }
-
-  .publication .icon-image {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    fill: white;
-    margin-left: 140px;
-  }
-
-  .publication .text-imagen {
-    display: none;
-  }
-
-  .publication .icon-submit {
-    display: none;
-  }
-
-  .publication .text-submit {
-    display: none;
-  }
-
-  .modify-publication {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .head-publication {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .modify-publication img {
-    width: 25px;
-    height: 23px;
-    margin-top: 15.48px;
-    margin-left: 9px;
-    flex-shrink: 0;
-    border-radius: 25px;
-  }
-
-  .modify-publication #user-name {
-    width: 95px;
-    height: 17px;
-    margin-top: 18.48px;
-    margin-left: 5px;
-    flex-shrink: 0;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-
-  .modify-publication .head-publication button {
-    width: 20.457px;
-    height: 5.114px;
-    flex-shrink: 0;
-    margin-top: 18.48px;
-    margin-left: 180px;
-  }
-
-  .modify-publication .img-publication {
-    width: 360px;
-    height: 320px;
-    flex-shrink: 0;
-    border-radius: 0%;
-  }
-
-  .interaction-toolbar {
-    width: 84.625px;
-    height: 16px;
-    flex-shrink: 0;
-    margin-top: 7px;
-    margin-left: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .interaction-toolbar button svg {
-    width: 16.67px;
-    height: 15px;
-    margin-right: 10px;
-  }
-
-  .user-comment {
-    width: 260px;
-    height: 15px;
-    margin-top: 16px;
-    margin-left: 8px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid white;
-  }
-
-  .modify-publication .user-comment #user-name {
-    color: #FFF;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    margin: 0%;
-  }
-
-  .modify-publication .user-comment #user-publication {
-    color: #FFF;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    margin: 0%;
-    margin-left: -30px;
-  }
-
-  .modify-publication #Add-comment {
-    width: 170px;
-    height: 32px;
-    margin-top: 10px;
-    margin-left: 9px;
-    background: #303030;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
+/* Estilos comunes */
+.home-content {
+  display: flex;
+  background: #121212;
+  width: 100%;
+  min-height: 110vh;
 }
 
-/*vista pc*/
-@media (min-width: 1098px) {
-  .home-content {
-    display: flex;
-    background: #121212;
-    width: 100%;
-    min-height: 110vh;
-  }
+.main-content {
+  margin-left: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centrar horizontalmente */
+}
 
-  .content-home {
-    /* Ajusta el margen izquierdo para mover el contenido hacia la derecha */
-    margin-left: 220px;
-    /* Puedes ajustar este valor según tus necesidades */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+.post-container {
+  margin-top: 20px;
+  width: 100%;
+  height: 10%;
+  border-radius: 10px;
+  margin-left: 400px;
+  flex: 1;
+  display: flex; /* Usamos flexbox para alinear horizontalmente */
+  align-items: flex-start; /* Alinear elementos al principio verticalmente */
+  padding: 20px;
+  overflow-y: auto;
+  background: #1E1E1E;
+}
 
-  #publishForm {
-    width: 100%;
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
+.user-image {
+  width: 40px; /* Tamaño de la imagen */
+  height: 40px;
+  border-radius: 50%; /* Para que la imagen sea redonda */
+  margin-right: 10px; /* Espacio entre la imagen y el textarea */
+  margin-top: 10px;
+}
 
-  .publication {
-    width: 632px;
-    height: 145px;
-    border-radius: 10px;
-    background: #1E1E1E;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    /* Agrega espacio interno para contenido */
-    box-sizing: border-box;
-    /* Incluye el padding en el ancho y alto */
-  }
+.post-content {
+  flex: 1; /* Ocupar el espacio restante horizontalmente */
+}
 
-  .row-img-textarea {
-    display: flex;
-    flex-direction: column;
-  }
+textarea {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  border: 1px solid #FFF;
+  background: #191818;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  resize: none;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Ajusta el margen superior */
+}
+.insert-button {
+  background-color: #151616;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin-right: 10px; /* Espacio entre los botones */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.publish-button {
+  background-color: #151616;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
-  .publication-image {
-    width: 37px;
-    height: 33px;
-    border-radius: 50px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    /* Ajusta el margen superior según sea necesario */
-  }
+.insert-button + .publish-button {
+  margin-left: 20px;
+}
 
-  .textarea-container {
-    flex: 1;
-    width: 100%;
-    /* Aprovecha todo el ancho disponible */
-    margin-top: 10px;
-    /* Agrega espacio entre la imagen y el textarea */
-  }
+button:hover {
+  background-color: #464748;
+}
 
-  .textarea-container textarea {
-    width: 524px;
-    height: 44px;
-    border-radius: 30px;
-    border: 1px solid #FFF;
-    background: #191818;
-    padding: 10px;
-    resize: none;
-    font-size: 20px;
-    overflow: hidden;
-  }
+/* Estilos de las publicaciones */
+.post {
+  width: 100%;
+  background-color: #1E1E1E;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 400px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .publication .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin-top: 10px;
-    /* Ajusta el margen superior según sea necesario */
-    margin-left: 140px;
-  }
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .insert-image-button,
-  .publish-button {
-    width: 40px;
-    height: 35px;
-    padding: 15px 30px;
-    font-size: 16px;
-    background-color: #1E1E1E;
-    border: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    width: calc(50% - 5px);
-  }
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-  .head-publication {
-    margin-top: 80px;
-  }
+.user-info {
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+}
 
-  .modify-publication img {
-    width: 60px;
-    height: 60px;
-    margin-left: 15px;
-    border-radius: 60px;
-  }
+.user-name {
+  font-weight: 600;
+  margin: 0;
+  color: #FFFFFF;
+}
 
-  .modify-publication #user-name {
-    font-size: 20px;
-    margin-left: -500px;
-    margin-top: 20px;
-  }
+.post-time {
+  color: #999999;
+  margin: 0;
+}
 
-  .modify-publication .interaction-toolbar button {
-    padding: 5px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
+.post-text {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #ffffffc0;
+}
 
-  .modify-publication .interaction-toolbar svg {
-    width: 20px;
-    height: 20px;
-  }
+.post-image img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+  justify-content: center;
+}
 
-  .modify-publication .head-publication {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 85%;
-  }
+.post-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
 
-  .modify-publication .head-publication button svg {
-    margin-left: auto;
-  }
+.like-button,
+.comment-button,
+.share-button {
+  background-color: #151616;
+  color: #9e9d9d;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-  .modify-publication .img-publication {
-    width: 85%;
-    max-width: 900px;
-    height: auto;
-    border-radius: 5px;
-    margin-top: 30px;
-    /* Agrega un margen superior para separar la imagen del botón */
-  }
-
-  .user-comment {
-    padding: 15px;
-    margin-top: 25px;
-    margin-left: 15px;
-  }
-
-  .modify-publication .user-comment #user-name {
-    font-size: 16px;
-  }
-
-  .modify-publication .user-comment #user-publication {
-    font-size: 16px;
-    margin-left: -40px;
-  }
-
-  .modify-publication #Add-comment {
-    width: 85%;
-    border-radius: 30px;
-    border: 1px solid #FFF;
-    background: #191818;
-    padding-left: 30px;
-    resize: none;
-    font-size: 10px;
-    margin-top: 10px;
-    /* Añade espacio entre el textarea y los comentarios */
-  }
-
-  button {
-    color: #FFF;
-    background-color: #121212;
-    border: none;
-  }
+.like-button:hover,
+.comment-button:hover,
+.share-button:hover {
+  background-color: #E0E1E4;
 }
