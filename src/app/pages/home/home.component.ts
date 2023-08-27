@@ -1,25 +1,43 @@
-import { outputAst } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ForoService } from 'src/app/core/service/foro/foro.service';
 import { Home } from 'src/app/models/item';
 import { forkJoin } from 'rxjs';
+import { InteractionService } from 'src/app/core/service/interaction/interaction.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  template: '<app-home (addModel) = "receiveData($event)>"</app-home>',
 })
 export class HomeComponent {
-  constructor(private foroService: ForoService){}
-
+  constructor(private foroService: ForoService, private interactionService: InteractionService){}
+  @Input() publication: any;
   title = 'home';
-  public listpublications: Home[] = []
-  public isLoading:boolean = true
+  public listpublications: Home[] = [];
+  public isLoading: boolean = true;
+  imageURL: string = '';
+  isModalVisible: boolean = false;
+  likedPublications: { [key: string]: boolean } = {};
 
+  ngOnInit(): void {
+    // Carga los "likes" guardados en el localStorage al inicio
+    const storedLikes = localStorage.getItem('likedPublications');
+    if (storedLikes) {
+      this.likedPublications = JSON.parse(storedLikes);
+    }
+    this.loadData();
+  }
 
-  ngOnInit():void{
-    this.loadData()
+  createPost() {
+    const userId = localStorage.getItem('userId');
+    const newPost = {
+      user: userId,
+      description: this.postText,
+      date_create: new Date(),
+      image: this.imageURL,
+    };
+    // Lógica para crear la publicación aquí
   }
 
   public loadData() {
@@ -36,19 +54,58 @@ export class HomeComponent {
             username: usernames[index],
             userimg: userimgs[index]
           }));
-          this.isLoading = false
+          this.isLoading = false;
         });
       });
   }
+
+  insertImageUrl() {
+    // Aquí puedes realizar la lógica para insertar la imagen en tu publicación
+    this.imageURL = ''; // Limpia la URL
+    this.isModalVisible = false;
+    console.log("Insert Image Clicked")
+  }
+
   postText: string = '';
 
   public insertImage() {
-    // Lógica para insertar imagen aquí
-    console.log('Insertar imagen');
+    this.isModalVisible = true; // Abrir el modal
   }
 
   public publishPost() {
     // Lógica para publicar la entrada aquí
     console.log('Publicar entrada:', this.postText);
+  }
+
+  //interactions
+  loadLikedPublicationsFromLocalStorage() {
+    const likedPublicationsString = localStorage.getItem('likedPublications');
+    if (likedPublicationsString) {
+      this.likedPublications = JSON.parse(likedPublicationsString);
+    }
+  }
+
+  likePublication(publication: Home) {
+    if (this.likedPublications[publication._id]) {
+      // Ya dio "like", entonces quitar el "like"
+      this.interactionService.unlikePublication(publication._id).subscribe(
+        response => {
+          publication.reactions = false;
+          this.likedPublications[publication._id] = false;
+          // Actualiza los "likes" en el localStorage después de quitar "like"
+          localStorage.setItem('likedPublications', JSON.stringify(this.likedPublications));
+        }
+      );
+    } else {
+      // No dio "like", dar el "like"
+      this.interactionService.likePublication(publication._id).subscribe(
+        response => {
+          publication.reactions = true;
+          this.likedPublications[publication._id] = true;
+          // Actualiza los "likes" en el localStorage después de dar "like"
+          localStorage.setItem('likedPublications', JSON.stringify(this.likedPublications));
+        }
+      );
+    }
   }
 }
