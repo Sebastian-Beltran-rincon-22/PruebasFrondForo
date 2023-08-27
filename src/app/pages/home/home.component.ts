@@ -3,6 +3,7 @@ import { ForoService } from 'src/app/core/service/foro/foro.service';
 import { Home } from 'src/app/models/item';
 import { forkJoin } from 'rxjs';
 import { InteractionService } from 'src/app/core/service/interaction/interaction.service';
+import { SwitchService } from 'src/app/core/service/modal/switch.service';
 
 
 @Component({
@@ -11,16 +12,25 @@ import { InteractionService } from 'src/app/core/service/interaction/interaction
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private foroService: ForoService, private interactionService: InteractionService){}
+  constructor(private foroService: ForoService,
+    private interactionService: InteractionService,
+    private modalSS:SwitchService ){}
+
+
   @Input() publication: any;
   title = 'home';
+
   public listpublications: Home[] = [];
   public isLoading: boolean = true;
+
   imageURL: string = '';
-  isModalVisible: boolean = false;
+  isModalVisible !: boolean;
+
   likedPublications: { [key: string]: boolean } = {};
 
+
   ngOnInit(): void {
+    this.modalSS.$modal.subscribe((valu)=>{this.isModalVisible = valu})
     // Carga los "likes" guardados en el localStorage al inicio
     const storedLikes = localStorage.getItem('likedPublications');
     if (storedLikes) {
@@ -28,6 +38,7 @@ export class HomeComponent {
     }
     this.loadData();
   }
+
 
   createPost() {
     const userId = localStorage.getItem('userId');
@@ -39,6 +50,7 @@ export class HomeComponent {
     };
     // Lógica para crear la publicación aquí
   }
+
 
   public loadData() {
     this.foroService.getTask('https://pooforoapi.onrender.com/publictpoofo/')
@@ -59,6 +71,7 @@ export class HomeComponent {
       });
   }
 
+
   insertImageUrl() {
     // Aquí puedes realizar la lógica para insertar la imagen en tu publicación
     this.imageURL = ''; // Limpia la URL
@@ -66,16 +79,21 @@ export class HomeComponent {
     console.log("Insert Image Clicked")
   }
 
-  postText: string = '';
 
-  public insertImage() {
-    this.isModalVisible = true; // Abrir el modal
+
+
+  openModal(){
+
+    this.isModalVisible = true
   }
 
+
+  postText: string = '';
   public publishPost() {
     // Lógica para publicar la entrada aquí
     console.log('Publicar entrada:', this.postText);
   }
+
 
   //interactions
   loadLikedPublicationsFromLocalStorage() {
@@ -84,6 +102,7 @@ export class HomeComponent {
       this.likedPublications = JSON.parse(likedPublicationsString);
     }
   }
+
 
   likePublication(publication: Home) {
     if (this.likedPublications[publication._id]) {
