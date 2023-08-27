@@ -3,6 +3,9 @@
     <app-aside></app-aside>
   </div>
   <div class="main-content">
+    <div class="app-loader-overlay" *ngIf="isLoading">
+      <app-loader></app-loader>
+    </div>
     <div class="post-container">
       <div class="user-info">
         <img class="user-image" src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="Imagen de usuario">
@@ -18,7 +21,7 @@
 
     <div *ngFor="let publication of listpublications" class="post">
       <div class="post-header">
-        <img class="user-avatar" [src]="publication.user" alt="Avatar de usuario">
+        <img class="user-avatar" [src]="publication.userimg" alt="Avatar de usuario">
         <div class="user-info">
           <p class="user-name">{{ publication.username }}</p>
           <p class="post-time">{{ publication.date_create | date }}</p>
@@ -27,7 +30,7 @@
       <div class="post-text">
         {{ publication.description }}
       </div>
-      <div class="post-image">
+      <div class="post-image" *ngIf="publication.image">
         <img [src]="publication.image" alt="Imagen de la publicación">
       </div>
       <div class="post-actions">
@@ -38,3 +41,4 @@
     </div>
   </div>
 </div>
+
