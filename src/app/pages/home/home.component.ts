@@ -1,8 +1,8 @@
 import { outputAst } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { ForoService } from 'src/app/core/service/foro/foro.service';
-import { Home } from 'src/app/models/item'
-
+import { Home } from 'src/app/models/item';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +11,40 @@ import { Home } from 'src/app/models/item'
   template: '<app-home (addModel) = "receiveData($event)>"</app-home>',
 })
 export class HomeComponent {
-  constructor(private ForoService: ForoService){}
+  constructor(private foroService: ForoService){}
 
   title = 'home';
-  public listpublications: any = []
+  public listpublications: Home[] = []
 
 
   ngOnInit():void{
     this.loadData()
   }
 
-  public loadData(){
-    this.ForoService.getTask('https://pooforoapi.onrender.com/publictpoofo/')
-    .subscribe(data =>{
-      console.log(data)
-      this.listpublications = data
-    })
+  public loadData() {
+    this.foroService.getTask('https://pooforoapi.onrender.com/publictpoofo/')
+      .subscribe((data: Home[]) => {
+        const requests = data.map(publication => this.foroService.getUsernameById(publication.user));
+
+        forkJoin(requests).subscribe((responses: any[]) => {
+          const usernames = responses.map(response => response.userName);
+
+          this.listpublications = data.map((publication, index) => ({
+            ...publication,
+            username: usernames[index]
+          }));
+        });
+      });
+  }
+  postText: string = '';
+
+  public insertImage() {
+    // Lógica para insertar imagen aquí
+    console.log('Insertar imagen');
+  }
+
+  public publishPost() {
+    // Lógica para publicar la entrada aquí
+    console.log('Publicar entrada:', this.postText);
   }
 }
