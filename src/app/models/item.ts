@@ -14,6 +14,8 @@ export interface Home extends User {
   image: string | null;
   _id: string;
   username: string;
-  userimg: string
+  userimg: string;
+  reactions: boolean;
+  comments: string
 }
 
