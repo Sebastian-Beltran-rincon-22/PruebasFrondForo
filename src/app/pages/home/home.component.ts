@@ -15,6 +15,7 @@ export class HomeComponent {
 
   title = 'home';
   public listpublications: Home[] = []
+  public isLoading:boolean = true
 
 
   ngOnInit():void{
@@ -28,11 +29,14 @@ export class HomeComponent {
 
         forkJoin(requests).subscribe((responses: any[]) => {
           const usernames = responses.map(response => response.userName);
+          const userimgs = responses.map(responses => responses.userImg )
 
           this.listpublications = data.map((publication, index) => ({
             ...publication,
-            username: usernames[index]
+            username: usernames[index],
+            userimg: userimgs[index]
           }));
+          this.isLoading = false
         });
       });
   }
