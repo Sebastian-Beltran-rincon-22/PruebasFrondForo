@@ -13,5 +13,6 @@ export interface Home extends User {
   description: string;
   image: string;
   _id: string;
+  username: string
 }
 
