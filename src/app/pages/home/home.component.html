@@ -13,7 +13,16 @@
       <div class="post-content">
         <textarea [(ngModel)]="postText" placeholder="Escribe tu publicación..."></textarea>
         <div class="button-group">
-          <button class="insert-button" (click)="insertImage()">Insertar Imagen</button>
+          <button class="insert-button" (click)="isModalVisible = true">Insertar Imagen</button>
+          <div id="myModal" class="modal" *ngIf="isModalVisible">
+            <div class="modal-content">
+              <span class="close" (click)="isModalVisible = false">&times;</span>
+              <input type="text" [(ngModel)]="imageURL" placeholder="Inserta la URL de la imagen">
+              <button (click)="isModalVisible = false">Cancelar</button>
+              <button (click)="insertImageUrl()">Insertar</button>
+            </div>
+          </div>
+
           <button class="publish-button" (click)="publishPost()">Publicar</button>
         </div>
       </div>
@@ -31,10 +40,10 @@
         {{ publication.description }}
       </div>
       <div class="post-image" *ngIf="publication.image">
-        <img [src]="publication.image" alt="Imagen de la publicación">
+        <img class="post-image-img" [src]="publication.image" alt="Imagen de la publicación">
       </div>
       <div class="post-actions">
-        <button class="like-button">Me gusta</button>
+        <button class="like-button" [ngClass]="{ 'liked': likedPublications[publication._id] }" (click)="likePublication(publication)">Me gusta</button>
         <button class="comment-button">Comentar</button>
         <button class="share-button">Compartir</button>
       </div>
