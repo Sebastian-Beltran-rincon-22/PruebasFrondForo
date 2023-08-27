@@ -1,0 +1,41 @@
+/* Estilos para el modal personalizado */
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_body {
+  background-color: #1E1E1E; /* Color de fondo del modal */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF; /* Color del texto en el modal */
+}
+
+.modal_body h3 {
+  margin: 0;
+}
+
+.modal_body button {
+  background-color: #3e3e3e;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal_body button:hover {
+  background-color: #595959;
+}
