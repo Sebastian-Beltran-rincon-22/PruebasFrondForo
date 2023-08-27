@@ -11,8 +11,9 @@ export interface Home extends User {
   user: string;
   date_create: Date;
   description: string;
-  image: string;
+  image: string | null;
   _id: string;
-  username: string
+  username: string;
+  userimg: string
 }
 
