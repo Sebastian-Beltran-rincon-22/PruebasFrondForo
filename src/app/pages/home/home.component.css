@@ -1,7 +1,7 @@
-
 /* Estilos comunes */
 .home-content {
   display: flex;
+  flex-direction: column;
   background: #121212;
   width: 100%;
   min-height: 110vh;
@@ -19,7 +19,7 @@
   z-index: 9999; /* Asegura que la pantalla de carga esté por encima del contenido */
 }
 .main-content {
-  margin-left: 500px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +29,7 @@
 .post-container {
   max-width: 900px;
   margin-top: 20px;
+  margin: 20px;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -43,7 +44,7 @@
 .user-image {
   width: 40px; /* Tamaño de la imagen */
   height: 40px;
-  border-radius: 50%; /* Para que la imagen sea redonda */
+  border-radius: 50%;
   margin-right: 10px; /* Espacio entre la imagen y el textarea */
   margin-top: 20px;
 }
@@ -66,7 +67,8 @@ textarea {
   overflow: hidden;
 }
 .button-group {
-  width: 100%;
+  width: 80%;
+  margin-left: 30px;
 }
 .insert-button {
   background-color: #151616;
@@ -88,16 +90,10 @@ textarea {
   transition: background-color 0.2s ease;
 }
 
-.insert-button + .publish-button {
-  margin-left: 20px;
-}
 
 button:hover {
   background-color: #464748;
 }
-/* Estilos para el modal */
-
-
 
 /* Estilos de las publicaciones */
 .post {
@@ -106,7 +102,7 @@ button:hover {
   background-color: #1E1E1E;
   border-radius: 10px;
   margin-top: 20px;
-
+  margin: 20px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -202,4 +198,28 @@ button:hover {
 .liked {
   background-color: #E0E1E4;
   color: #151616;
+}
+
+
+@media (max-width: 425px) {
+  .main-content {
+    margin-left: 50px; /* adaptar al margen lateral */
+  }
+  .button-group {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin-left: 0;
+    justify-content: center;
+    display: flex;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main-content {
+    margin-left: 200px; /* adaptar al margen lateral */
+  }
+  .button-group {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
 }
