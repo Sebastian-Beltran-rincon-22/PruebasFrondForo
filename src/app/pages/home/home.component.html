@@ -11,10 +11,10 @@
         <img class="user-image" src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="Imagen de usuario">
       </div>
       <div class="post-content">
-        <textarea [(ngModel)]="postText" placeholder="Escribe tu publicación..."></textarea>
+        <textarea [(ngModel)]="postText" placeholder="Write your post..."></textarea>
         <div class="button-group">
-          <button class="insert-button" (click)="openModal()">Insertar Imagen</button>
-          <button class="publish-button" (click)="publishPost()">Publicar</button>
+          <button class="insert-button" (click)="openModal()">Insert image</button>
+          <button class="publish-button" (click)="publishPost()">Post</button>
         </div>
       </div>
     </div>
@@ -34,9 +34,9 @@
         <img class="post-image-img" [src]="publication.image" alt="Imagen de la publicación">
       </div>
       <div class="post-actions">
-        <button class="like-button" [ngClass]="{ 'liked': likedPublications[publication._id] }" (click)="likePublication(publication)">Me gusta</button>
-        <button class="comment-button">Comentar</button>
-        <button class="share-button">Compartir</button>
+        <button class="like-button" [ngClass]="{ 'liked': likedPublications[publication._id] }" (click)="likePublication(publication)">Like</button>
+        <button class="comment-button">Comment</button>
+        <button class="share-button">Share</button>
       </div>
     </div>
   </div>
