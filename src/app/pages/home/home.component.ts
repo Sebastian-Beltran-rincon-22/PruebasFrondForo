@@ -16,11 +16,12 @@ export class HomeComponent {
     private interactionService: InteractionService,
     private modalSS:SwitchService ){}
 
-
   @Input() publication: any;
   title = 'home';
 
+  //Data Homr
   public listpublications: Home[] = [];
+
   public isLoading: boolean = true;
 
   imageURL: string = '';
@@ -30,6 +31,7 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
+
     this.modalSS.$modal.subscribe((valu)=>{this.isModalVisible = valu})
     // Carga los "likes" guardados en el localStorage al inicio
     const storedLikes = localStorage.getItem('likedPublications');
@@ -37,18 +39,6 @@ export class HomeComponent {
       this.likedPublications = JSON.parse(storedLikes);
     }
     this.loadData();
-  }
-
-
-  createPost() {
-    const userId = localStorage.getItem('userId');
-    const newPost = {
-      user: userId,
-      description: this.postText,
-      date_create: new Date(),
-      image: this.imageURL,
-    };
-    // Lógica para crear la publicación aquí
   }
 
 
@@ -72,23 +62,16 @@ export class HomeComponent {
   }
 
 
-  insertImageUrl() {
-    // Aquí puedes realizar la lógica para insertar la imagen en tu publicación
-    this.imageURL = ''; // Limpia la URL
-    this.isModalVisible = false;
-    console.log("Insert Image Clicked")
-  }
-
-
-
-
+  //Modal
   openModal(){
 
     this.isModalVisible = true
   }
 
 
+  // Simulacion para publicaciones
   postText: string = '';
+
   public publishPost() {
     // Lógica para publicar la entrada aquí
     console.log('Publicar entrada:', this.postText);
