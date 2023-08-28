@@ -1,43 +1,38 @@
 # Frontend de Foro - Documentación
 
-Este es el frontend de un foro construido utilizando Angular y TypeScript. El frontend interactúa con el backend implementado en Node.js y MongoDB para proporcionar una experiencia completa de la aplicación.
+Este es el frontend de un foro construido utilizando Angular . El frontend interactúa con el backend implementado en Express con una base de datos basada en MongoDB para proporcionar una experiencia completa de la aplicación.
+
+El proyecto fue creado con [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8. 
+
+## Version Oficial V1.0
+
+![image](https://github.com/nikolaspaez06/froten_foro/assets/132385582/0bc7528a-eccb-475a-8675-5defdd3792bf)
+![image](https://github.com/nikolaspaez06/froten_foro/assets/132385582/6bb1e5f8-60c0-4284-ad5b-32d7a9169f5b)
+
 
 ## Estructura del Proyecto
+![image](https://github.com/nikolaspaez06/froten_foro/assets/132385582/2407e82f-6903-44fc-8b0d-e23b3c3cf9fc)
 
-La estructura del proyecto frontend se organiza de la siguiente manera:
+## Funcionalidades
 
-- `angular/`: Contiene el proyecto Angular.
-- `node_modules/`: Contiene las dependencias del proyecto.
-- `src/`: Directorio fuente del proyecto Angular.
-  - `app/`: Contiene componentes y archivos relacionados con la aplicación.
-    - `app-routing.module.ts`: Definición de rutas de la aplicación.
-    - `app.component.css`, `app.component.html`, `app.component.spec.ts`, `app.component.ts`: Componente principal de la aplicación.
-    - `app.module.ts`: Módulo principal de la aplicación.
-    - `core/`: Contiene componentes y servicios compartidos.
-      - `aside/`: Componente del menú lateral.
-      - `header/`: Componente de la cabecera.
-      - `services/`: Contiene servicios compartidos.
-      - `core.module.ts`: Módulo central para importar servicios y componentes compartidos.
-    - `models/`: Contiene definiciones de modelos de datos.
-      - `item.ts`: Interfaz para los datos que se importan desde el backend.
-    - `pages/`: Contiene las páginas principales de la aplicación.
-      - `home/`, `login/`, `profile/`, `register/`: Carpetas de componentes para cada página.
-      - `pages.module.ts`: Módulo para importar y declarar las páginas de la aplicación.
-  - `favicon.ico`, `index.html`, `main.ts`, `style.css`: Archivos principales de la aplicación.
-  
-- `.editorconfig`: Archivo para definir las configuraciones del editor.
-- `.gitignore`: Archivo para especificar archivos y carpetas que deben ser ignorados por Git.
-- `angular.json`: Archivo de configuración de Angular.
-- `package-lock.json` y `package.json`: Archivos de gestión de dependencias.
-- `tsconfig.app.json`, `tsconfig.json`, `tsconfig.spec.json`: Archivos de configuración de TypeScript.
+- Logueo y Registro a través Token asignando Usuarios y Admin
+- Loader mientras se procesa la Data de Home
+- Visualizacion de publicaciones realizadas en el Foro
+- Interacion de Me gusta en las publicaciones
+- Visualizacion de Perfil de Usuarios
 
-## Uso y Despliegue
+## Tecnologias Usadas
+- NodeJs
+- TypeScript
+- Angular CLI
 
-1. Asegúrate de tener Node.js instalado en tu sistema.
-2. Clona este repositorio en tu máquina.
-3. Navega a la carpeta del proyecto y ejecuta `npm install` para instalar las dependencias.
-4. Utiliza el comando `ng serve` para iniciar el servidor de desarrollo.
-5. Abre tu navegador y ve a `http://localhost:4200` para acceder a la aplicación en desarrollo.
+## Uso
+
+- Asegúrate de tener Node.js instalado en tu sistema.
+- Clona este repositorio en tu máquina.
+- Navega a la carpeta del proyecto y ejecuta `npm install` para instalar las dependencias.
+- Utiliza el comando `ng serve` para iniciar el servidor de desarrollo.
+- Abre tu navegador y ve a `http://localhost:4200` para acceder a la aplicación en desarrollo.
 
 ## Componentes
 
@@ -46,14 +41,60 @@ La estructura del proyecto frontend se organiza de la siguiente manera:
 - `profile`: Página de perfil de usuario con información personal y actividades.
 - `register`: Página de registro para nuevos usuarios.
 
+## Instalacion
+
+1 Clona el repositorio en tu maquina local
+```bash
+$ git clone git@github.com:nikolaspaez06/froten_foro.git
+```
+
+2 Navega en el directorio del proyecto 
+```bash
+$ cd froten_foro
+```
+
+3 Puedes cambiar el origen del proyecto con los siguientes comando
+
+```bash
+$ git remote -v
+$ git remote remove origin
+$ git remote add origin <nueva_url_del_repositorio>
+```
+
+4 Instalar las dependecias necesarias
+- Recuerda tener el package.json y el package-lock.json en el root de la carpeta y ejecutas
+
+```bash
+$ npm i
+```
+
+## Referencia
+
+- Puedes ver la estructura del Back-End clickeando <a href="https://github.com/nikolaspaez06/backend_foro">aqui</a>
+
 ## Contribuciones
 
 Si deseas contribuir a este proyecto, ¡estamos abiertos a pull requests! Asegúrate de seguir las mejores prácticas de desarrollo de Angular y TypeScript.
 
 ## Contacto
 
-Si tienes preguntas o sugerencias, no dudes en ponerte en contacto con el equipo de desarrollo en [correo: elhuxley277@gmail.com,Maribelaristizabal079@gmail.com,sebastiantincon834@gmail.com,jaljordan77@gmail.com,palacioalexander5@gmail.com,ruizvalencia78@gmail.com,brayantandap@gmail.com].
+Si tienes preguntas o sugerencias, no dudes en ponerte en contacto con el equipo de desarrollo enviando un correo electrónico a alguno de los siguientes miembros:
 
----
-Proyecto desarrollado por [Heisenberg Diaz,Maribel saaavedra,Alexander Palacio,Nicolas paez,Sebastian Beltran,Juan Ruiz,Brayan/ Foopo].
+- [Elhuxley277@gmail.com](mailto:elhuxley277@gmail.com)
+- [Maribelaristizabal079@gmail.com](mailto:maribelaristizabal079@gmail.com)
+- [Sebastiantincon834@gmail.com](mailto:sebastiantincon834@gmail.com)
+- [Jaljordan77@gmail.com](mailto:jaljordan77@gmail.com)
+- [Palacioalexander5@gmail.com](mailto:palacioalexander5@gmail.com)
+- [Ruizvalencia78@gmail.com](mailto:ruizvalencia78@gmail.com)
+- [Brayantandap@gmail.com](mailto:brayantandap@gmail.com)
 
+## Autors
+
+- [@nicolas paez](https://github.com/nikolaspaez06)
+- [@huxley diaz](https://github.com/heisemberghuxley)
+- [@john palacios ](https://github.com/John9135)
+- [@juan andres  Ruiz](https://github.com/juan0941)
+- [@brayan Triana](https://github.com/Vincent10-o)
+- [@maribel aristizabal](https://github.com/maribel-aristizabal)
+- [@Sebastian Beltran](https://github.com/Sebastian-Beltran-rincon-22)
+- [@julian gaitan](https://github.com/Julian9373)
