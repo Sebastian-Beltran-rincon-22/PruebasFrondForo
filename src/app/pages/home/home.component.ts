@@ -25,7 +25,6 @@ export class HomeComponent {
   //Data Homr
   public listpublications: Home[] = [];
   public comments: Comment[] = [];
-  public relatedComments: any[] = []
 
   public isLoading: boolean = true;
   commentContent?: string;
