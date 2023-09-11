@@ -7,6 +7,12 @@ export interface User {
     userImg:string;
 }
 
+export interface Interaction{
+
+  _id: string;
+  userId: string;
+  publicationId: string
+}
 export interface Home extends User {
   user: string;
   date_create: Date;
@@ -16,6 +22,15 @@ export interface Home extends User {
   username: string;
   userimg: string;
   reactions: boolean;
-  comments: string
+  interactions: Interaction[]
 }
+export interface Comment {
+  _id: string;
+  content: string;
+  user:string;
+  publication: string; // Cambia esto si el tipo de publication es diferente
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 
