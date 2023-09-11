@@ -199,6 +199,80 @@ button:hover {
   background-color: #E0E1E4;
   color: #151616;
 }
+/* Estilos para el modal de comentarios */
+.comment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.555); /* Fondo semi-transparente */
+  z-index: 9999; /* Asegura que el modal esté por encima de todo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-modal-content {
+  background: #1E1E1E;
+  border-radius: 10px;
+  max-width: 600px; /* Ajusta el ancho del modal según tus necesidades */
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Permite que los botones queden dentro del modal */
+}
+
+.comment-modal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.comment-modal textarea {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border: 1px solid #FFF;
+  background: #191818;
+  margin-bottom: 10px;
+  border-radius: 5px; /* Ajusta el radio de borde */
+  resize: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.comment-modal button {
+  background-color: #151616;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.comment-modal button:hover {
+  background-color: #464748;
+}
+
+/* Estilo para centrar verticalmente el contenido del modal */
+.comment-modal-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo para crear una caja alrededor del contenido del modal */
+.comment-modal-box {
+  padding: 20px;
+  border: 1px solid #FFF; /* Borde alrededor del contenido */
+  border-radius: 10px; /* Radio de borde para el contenido */
+}
+
 
 
 @media (max-width: 425px) {
