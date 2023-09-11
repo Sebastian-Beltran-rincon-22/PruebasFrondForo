@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ForoService } from 'src/app/core/service/foro/foro.service';
-import { Home } from 'src/app/models/item';
+import { Home, Interaction, Comment } from 'src/app/models/item';
 import { forkJoin } from 'rxjs';
 import { InteractionService } from 'src/app/core/service/interaction/interaction.service';
 import { SwitchService } from 'src/app/core/service/modal/switch.service';
+import { CommentsService } from 'src/app/core/service/comments/comments.service';
 
 
 @Component({
@@ -12,8 +13,10 @@ import { SwitchService } from 'src/app/core/service/modal/switch.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+
   constructor(private foroService: ForoService,
     private interactionService: InteractionService,
+    private commentService: CommentsService,
     private modalSS:SwitchService ){}
 
   @Input() publication: any;
@@ -21,23 +24,25 @@ export class HomeComponent {
 
   //Data Homr
   public listpublications: Home[] = [];
+  public comments: Comment[] = [];
+  public relatedComments: any[] = []
 
   public isLoading: boolean = true;
-
+  commentContent?: string;
   imageURL: string = '';
   isModalVisible !: boolean;
+  isCommentModalVisible: boolean = false;
 
   likedPublications: { [key: string]: boolean } = {};
+  interactions: {[key: string]: Interaction} = {};
+
+
 
 
   ngOnInit(): void {
 
     this.modalSS.$modal.subscribe((valu)=>{this.isModalVisible = valu})
-    // Carga los "likes" guardados en el localStorage al inicio
-    const storedLikes = localStorage.getItem('likedPublications');
-    if (storedLikes) {
-      this.likedPublications = JSON.parse(storedLikes);
-    }
+
     this.loadData();
   }
 
@@ -79,35 +84,57 @@ export class HomeComponent {
 
 
   //interactions
-  loadLikedPublicationsFromLocalStorage() {
-    const likedPublicationsString = localStorage.getItem('likedPublications');
-    if (likedPublicationsString) {
-      this.likedPublications = JSON.parse(likedPublicationsString);
-    }
-  }
 
-
-  likePublication(publication: Home) {
-    if (this.likedPublications[publication._id]) {
+  likePublication(publicationId: string) {
+    if (this.likedPublications[publicationId]) {
       // Ya dio "like", entonces quitar el "like"
-      this.interactionService.unlikePublication(publication._id).subscribe(
-        response => {
-          publication.reactions = false;
-          this.likedPublications[publication._id] = false;
-          // Actualiza los "likes" en el localStorage después de quitar "like"
-          localStorage.setItem('likedPublications', JSON.stringify(this.likedPublications));
+      this.interactionService.unlikePublication(publicationId).subscribe(
+        (response) => {
+          this.likedPublications[publicationId] = false;
+        },
+        (error) => {
+          console.error('Error al quitar like:', error);
         }
       );
     } else {
       // No dio "like", dar el "like"
-      this.interactionService.likePublication(publication._id).subscribe(
-        response => {
-          publication.reactions = true;
-          this.likedPublications[publication._id] = true;
-          // Actualiza los "likes" en el localStorage después de dar "like"
-          localStorage.setItem('likedPublications', JSON.stringify(this.likedPublications));
+      this.interactionService.likePublication(publicationId).subscribe(
+        (response) => {
+          this.likedPublications[publicationId] = true;
+        },
+        (error) => {
+          console.error('Error al dar like:', error);
         }
       );
     }
   }
+
+
+  //Comentarios
+  openCommentModal(publicationId:string) {
+    this.isCommentModalVisible = true;
+    this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
+      this.comments = data;
+    });
+  }
+
+  createComment(publicationId: string) {
+    const data = { content: this.commentContent, publication: publicationId };
+    this.commentService.createComment(data).subscribe(
+      (response) => {
+        console.log('Comentario creado', response);
+          this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
+          this.comments = data;
+          });
+      },
+      (error) => {
+        console.error('Error al crear comentario:', error);
+      }
+    );
+  }
+  closeCommentModal() {
+    this.isCommentModalVisible = false;
+  }
+
+
 }
