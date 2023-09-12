@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ForoService } from 'src/app/core/service/foro/foro.service';
-import { Home, Interaction, Comment } from 'src/app/models/item';
+import { Home, Interaction, Comment, User } from 'src/app/models/item';
 import { forkJoin } from 'rxjs';
 import { InteractionService } from 'src/app/core/service/interaction/interaction.service';
 import { SwitchService } from 'src/app/core/service/modal/switch.service';
@@ -20,7 +20,9 @@ export class HomeComponent {
     private modalSS:SwitchService ){}
 
   @Input() publication: any;
+  user: any
   title = 'home';
+  //user: any = []
 
   //Data Homr
   public listpublications: Home[] = [];
@@ -109,28 +111,51 @@ export class HomeComponent {
   }
 
 
-  //Comentarios
-  openCommentModal(publicationId:string) {
-    this.isCommentModalVisible = true;
-    this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
-      this.comments = data;
+// Comentarios
+openCommentModal(publicationId: string) {
+  this.isCommentModalVisible = true;
+  this.comments = []; // Limpiar los comentarios actuales antes de cargar nuevos
+
+  this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
+    const commentRequests = data.map(comment => this.foroService.getUsernameById(comment.user));
+
+    forkJoin(commentRequests).subscribe((responses: any[]) => {
+      for (let i = 0; i < data.length; i++) {
+        data[i].userName = responses[i].userName;
+        data[i].userAvatar = responses[i].userImg;
+      }
+      this.comments = data; // Almacenar los comentarios solo para la publicación actual
     });
+  });
+}
+
+
+  createComment(publicationId: string, user: User) {
+    if (user && user._id && typeof user._id === 'string') { // Verifica que user sea válido y tenga una propiedad _id
+      const data = {
+        content: this.commentContent,
+        user: user._id, // Utiliza user._id en lugar de user.id
+        publicationId: publicationId
+      };
+
+      // Ahora puedes usar la variable 'data' en la llamada a this.commentService.createComment
+      this.commentService.createComment(data).subscribe(
+        (response) => {
+          console.log('Comentario creado', response);
+          this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
+            this.comments = data;
+          });
+        },
+        (error) => {
+          console.error('Error al crear comentario:', error);
+        }
+      );
+    } else {
+      console.error('El objeto user o su propiedad _id no están definidos correctamente.');
+    }
   }
 
-  createComment(publicationId: string) {
-    const data = { content: this.commentContent, publication: publicationId };
-    this.commentService.createComment(data).subscribe(
-      (response) => {
-        console.log('Comentario creado', response);
-          this.commentService.getComments(publicationId).subscribe((data: Comment[]) => {
-          this.comments = data;
-          });
-      },
-      (error) => {
-        console.error('Error al crear comentario:', error);
-      }
-    );
-  }
+
   closeCommentModal() {
     this.isCommentModalVisible = false;
   }
