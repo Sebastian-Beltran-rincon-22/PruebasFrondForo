@@ -24,13 +24,15 @@ export interface Home extends User {
   reactions: boolean;
   interactions: Interaction[]
 }
-export interface Comment {
+export interface Comment extends User {
   _id: string;
   content: string;
   user:string;
   publication: string; // Cambia esto si el tipo de publication es diferente
   createdAt: Date;
   updatedAt: Date;
+  username: string;
+  userAvatar: string;
 }
 
 
