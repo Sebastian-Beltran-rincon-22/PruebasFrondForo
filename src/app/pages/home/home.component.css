@@ -200,6 +200,7 @@ button:hover {
   color: #151616;
 }
 /* Estilos para el modal de comentarios */
+
 .comment-modal {
   position: fixed;
   top: 0;
@@ -219,7 +220,7 @@ button:hover {
   max-width: 600px; /* Ajusta el ancho del modal según tus necesidades */
   width: 100%;
   padding: 20px;
-  text-align: center;
+  text-align: left; /* Alinea el contenido a la izquierda */
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative; /* Permite que los botones queden dentro del modal */
@@ -228,6 +229,51 @@ button:hover {
 .comment-modal h2 {
   font-size: 24px;
   margin-bottom: 20px;
+  justify-content: center;
+  display: flex;
+}
+
+.comment-h5{
+
+  justify-content: center;
+  display: flex;
+  margin-top: 15px;
+}
+.comment {
+  display: flex;
+  margin-bottom: 20px; /* Espacio entre comentarios */
+  justify-content: center;
+}
+
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  background-color: #514e4e88;
+  border: 1px solid #ffffff80;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+
+.comment-avatar {
+  width: 38px; /* Tamaño deseado */
+  height: 38px; /* Tamaño deseado */
+  border-radius: 50%; /* Hacerlo redondo */
+  margin-right: 10px;
+}
+
+.comment-username {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.comment p {
+  color: #ffffffc0;
+  font-size: 16px;
 }
 
 .comment-modal textarea {
@@ -272,6 +318,7 @@ button:hover {
   border: 1px solid #FFF; /* Borde alrededor del contenido */
   border-radius: 10px; /* Radio de borde para el contenido */
 }
+
 
 
 
