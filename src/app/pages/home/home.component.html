@@ -42,12 +42,20 @@
           <div class="comment-modal-content">
             <h2>Create Comment</h2>
             <textarea [(ngModel)]="commentContent" placeholder="Write your comment"></textarea>
-            <button class="publish-button" (click)="createComment(publication._id)">Post Comment</button>
+            <button class="publish-button" (click)="createComment(publication._id, user)">Post Comment</button>
             <button class="close-button" (click)="closeCommentModal()">Close Down</button>
             <div class="comments-section">
-              <h5>Comments</h5>
+              <h5 class="comment-h5">Comments</h5>
               <div *ngFor="let comment of comments">
-                <p>{{comment.content}} - User ID: {{comment.user}}</p>
+                <div class="comment">
+                <div>
+                <img [src]="comment.userAvatar" alt="Avatar" class="comment-avatar">
+                </div>
+                <div class="comment-content">
+                <div class="comment-username">{{ comment.userName }}</div>
+                <p>{{ comment.content }}</p>
+              </div>
+              </div>
               </div>
             </div>
           </div>
