@@ -17,4 +17,5 @@ export class CommentsService {
   getComments(publicationId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}comments/publication/${publicationId}`);
   }
+
 }
